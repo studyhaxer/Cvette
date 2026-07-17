@@ -53,8 +53,9 @@ Cvette is a small, public AI-powered web app that compares a resume against a jo
 cvette/
 ├── backend/
 │   ├── main.py
+│   ├── config.py
 │   ├── requirements.txt
-│   ├── .env
+│   ├── .env                 # local only — gitignored, never committed
 │   ├── schemas.py
 │   └── services/
 │       ├── extract.py       # PDF/DOCX -> plain text
@@ -106,6 +107,8 @@ Create a `.env` file inside `backend/`:
 GROQ_API_KEY=your_groq_api_key
 ```
 
+**Never commit `.env`.** It's listed in `.gitignore` — double-check with `git status` that it shows as untracked before your first commit. If a real API key is ever accidentally committed, treat it as compromised: regenerate the key immediately rather than relying on removing it from history.
+
 ### Run the Backend
 
 From `backend/`:
@@ -134,7 +137,7 @@ npm run dev
 - [x] Project scaffold (backend + frontend folder structure)
 
 ### Step 2
-- [ ] `/analyze` endpoint — plain text input, Groq integration, JSON response
+- [x] `/analyze` endpoint — plain text input, Groq integration, JSON response
 
 ### Step 3
 - [ ] File upload support (PDF via `pdfplumber`, DOCX via `python-docx`)
@@ -209,6 +212,6 @@ This project is licensed under the MIT License.
 
 ## ⭐ Project Status
 
-🚧 **Day 1 — Project Scaffolded, Build In Progress**
+🚧 **Day 2 — Core AI Matching Endpoint Live**
 
 Cvette is being built incrementally and documented publicly as a build-in-public project. Follow along for daily updates as each step of the roadmap above is completed.
