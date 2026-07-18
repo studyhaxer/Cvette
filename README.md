@@ -140,7 +140,7 @@ npm run dev
 - [x] `/analyze` endpoint — plain text input, Groq integration, JSON response
 
 ### Step 3
-- [ ] File upload support (PDF via `pdfplumber`, DOCX via `python-docx`)
+- [x] File upload support (PDF via `pdfplumber`, DOCX via `python-docx`)
 
 ### Step 4
 - [ ] Frontend — input forms (paste/upload toggle), results display
@@ -212,6 +212,6 @@ This project is licensed under the MIT License.
 
 ## ⭐ Project Status
 
-🚧 **Day 2 — Core AI Matching Endpoint Live**
+🚧 **Day 3 — File Upload Support Live**
 
 Cvette is being built incrementally and documented publicly as a build-in-public project. Follow along for daily updates as each step of the roadmap above is completed.
