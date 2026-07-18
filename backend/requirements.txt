@@ -1,6 +1,9 @@
 fastapi
-uvicorn
+uvicorn[standard]
 groq
 pydantic
 pydantic-settings
 python-dotenv
+pdfplumber
+python-docx
+python-multipart
