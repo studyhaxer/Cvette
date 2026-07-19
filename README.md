@@ -6,7 +6,7 @@ Cvette is a small, public AI-powered web app that compares a resume against a jo
 
 ---
 
-## 🚀 Features (planned)
+## 🚀 Features
 
 ### Core Analysis
 - Paste resume + job description as plain text, or upload as PDF/DOCX
@@ -21,7 +21,7 @@ Cvette is a small, public AI-powered web app that compares a resume against a jo
 
 ### Public-facing
 - Fully stateless — no accounts, no saved data
-- Rate-limited per IP to keep the tool sustainable on a free AI API tier
+- Rate-limited per IP to keep the tool sustainable on a free AI API tier *(planned — see roadmap)*
 
 ---
 
@@ -38,6 +38,7 @@ Cvette is a small, public AI-powered web app that compares a resume against a jo
 ### Frontend
 - React
 - Vite
+- Axios
 
 ### Development Tools
 - Git
@@ -62,6 +63,14 @@ cvette/
 │       ├── groq_client.py   # Groq API call + prompt
 │       └── report.py        # ReportLab PDF generation
 ├── frontend/                # Vite + React
+│   └── src/
+│       ├── App.jsx
+│       ├── api/
+│       │   ├── analyze.js
+│       │   └── report.js
+│       └── components/
+│           ├── TextOrFileInput.jsx
+│           └── ResultsPanel.jsx
 ├── .gitignore
 └── README.md
 ```
@@ -143,13 +152,14 @@ npm run dev
 - [x] File upload support (PDF via `pdfplumber`, DOCX via `python-docx`)
 
 ### Step 4
-- [ ] Frontend — input forms (paste/upload toggle), results display
+- [x] Frontend — input forms (paste/upload toggle), results display
 
 ### Step 5
-- [ ] `/report` endpoint — PDF report generation via ReportLab, download button on frontend
+- [x] `/report` endpoint — PDF report generation via ReportLab, download button on frontend
 
 ### Step 6
-- [ ] Deployment (Railway), rate limiting (`slowapi`), CORS configuration
+- [ ] Deployment (Railway), rate limiting (`slowapi`), CORS configuration for production
+  - *On hold — Cvette currently runs locally only and remains a GitHub-hosted project. Deployment may be picked up later.*
 
 ---
 
@@ -212,6 +222,8 @@ This project is licensed under the MIT License.
 
 ## ⭐ Project Status
 
-🚧 **Day 3 — File Upload Support Live**
+✅ **Day 5 — PDF Report Generation Live (Core Build Complete)**
 
-Cvette is being built incrementally and documented publicly as a build-in-public project. Follow along for daily updates as each step of the roadmap above is completed.
+The core Cvette flow — paste or upload a resume and job description, get an AI-powered match score with missing keywords and rewritten bullet suggestions, and download a PDF report — is fully working end to end. Deployment (Step 6) is on hold for now; the project remains local and GitHub-hosted.
+
+Built incrementally and documented publicly as a build-in-public project.

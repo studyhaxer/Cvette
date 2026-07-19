@@ -3,8 +3,20 @@ from fastapi import FastAPI, File, Form, HTTPException, UploadFile
 from schemas import AnalysisResult
 from services.extract import extract_text
 from services.groq_client import analyze_resume
+from fastapi.responses import StreamingResponse
+from services.report import ReportRequest, generate_report_pdf
 
 app = FastAPI(title="Cvette API", description="Match your resume. Land the interview.")
+
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.get("/health")
@@ -52,3 +64,13 @@ async def analyze(
         return analyze_resume(resolved_resume, resolved_jd)
     except ValueError as exc:
         raise HTTPException(status_code=502, detail=str(exc))
+
+
+@app.post("/report")
+async def report(data: ReportRequest):
+    pdf_buffer = generate_report_pdf(data)
+    return StreamingResponse(
+        pdf_buffer,
+        media_type="application/pdf",
+        headers={"Content-Disposition": "attachment; filename=cvette-report.pdf"},
+    )
